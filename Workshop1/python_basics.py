@@ -14,9 +14,9 @@ def part1(num):
     """
 
     if num % 2 == 0:
-        print("even")
+        print("even!")
     else:
-        print("odd")
+        print("odd!")
 
 
 def part2():
@@ -34,7 +34,7 @@ def part2():
     number = randint(1, 9)
 
     while True:
-        guess = raw_input("Please enter a guess or type exit to exit.")
+        guess = raw_input("Guess: ")
 
         if guess == "exit":
             break
@@ -42,12 +42,12 @@ def part2():
             guess = int(guess)
 
             if guess == number:
-                print("You guessed it right.")
+                print("You got it.")
                 break
             elif guess > number:
-                print("Your guess was too high.")
+                print("Too high")
             elif guess < number:
-                print("Your guess was too low.")    
+                print("Too low")    
 
 
 
@@ -88,11 +88,14 @@ def part4b(filename, password=None):
     read_pass = lines[1][:-1]
 
     if password == None:    
-        print("Username: " + read_user)
-        print("Password: " + read_pass)
+        print("Username: " + base64.b64decode(bytes(read_user)))
+        print("Password: " + base64.b64decode(bytes(read_pass)))
     else:
-        username_encrypted = base64.b64encode(bytes(read_user))
+        username_encrypted = read_user
         password_encrypted = base64.b64encode(bytes(password))
+
+        print("Username: " + base64.b64decode(bytes(read_user)))
+        print("Password: " + password)
 
 if __name__ == "__main__":
     part1(3)  # odd!
